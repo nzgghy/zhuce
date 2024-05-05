@@ -18,8 +18,8 @@
 
         .container {
             width: 90%; /* 改为相对宽度，适应不同设备 */
-            max-width: 400px; /* 设置最大宽度 */
-            padding: 20px;
+            max-width: 300px; /* 设置最大宽度 */
+            padding: 10px;
             background-color: rgba(255, 255, 255, 0.3); /* 将白色背景设置为半透明 */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,32 +27,29 @@
 
         h2 {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             color: red; /* 红色 */
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
+        input[type="password"],
+        input[type="submit"] {
+            width: calc(100% - 8px); /* 在小屏幕上减去一些边距 */
+            padding: 4px;
+            margin-bottom: 6px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
         }
 
         input[type="submit"] {
-            width: 100%;
-            padding: 10px;
             background-color: #4CAF50;
             color: #fff;
-            border: none;
-            border-radius: 4px;
             cursor: pointer;
         }
 
@@ -63,16 +60,31 @@
         .captcha-container {
             display: flex;
             align-items: center;
+            margin-bottom: 6px;
         }
 
-        @media only screen and (max-width: 600px) {
+        #captcha {
+            width: calc(50% - 8px); /* 缩小验证码输入框宽度 */
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        img {
+            width: calc(50% - 8px); /* 缩小验证码图片宽度 */
+            height: auto;
+            border-radius: 4px;
+        }
+
+        @media only screen and (max-width: 400px) {
             .container {
                 width: 90%; /* 在小屏幕上适当缩小宽度 */
             }
             input[type="text"],
             input[type="password"],
             input[type="submit"] {
-                width: calc(100% - 20px); /* 在小屏幕上减去一些边距 */
+                width: calc(100% - 8px); /* 在小屏幕上减去一些边距 */
             }
         }
     </style>
@@ -92,8 +104,8 @@
             
             <label for="captcha">验证码：</label>
             <div class="captcha-container">
-                <input type="text" id="captcha" name="captcha" required pattern="[k4p8KP]{4}"  title="必须是4位，英文字母加数字" required style="width: 200px;"> <!-- 缩小宽度 -->
-                <img src="1.jpg" alt="验证码" style="width: 90px; height: 45px;"> <!-- 与输入框宽度相同 -->
+                <input type="text" id="captcha" name="captcha" required pattern="[k4p8KP]{4}"  title="必须是4位，英文字母加数字" required> <!-- 缩小宽度 -->
+                <img src="1.jpg" alt="验证码"> <!-- 与输入框宽度相同 -->
             </div>
             <input type="submit" value="注册">
         </form>
